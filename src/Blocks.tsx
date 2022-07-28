@@ -1,7 +1,8 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { Block } from "./Block";
 
 import { BLOCKS as Data } from "./data/blocks";
+import { isBingo } from "./logics/logics";
 
 type Block = {
   isOpen: boolean;
@@ -46,28 +47,34 @@ const reducer = (state: State, action: ActionTypes): State => {
 };
 
 const Blocks: React.FC = () => {
+  useEffect(() => {
+    const bingo = isBingo(state);
+    console.log(bingo);
+  });
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <>
       <table className="border-separate border-spacing-2 border border-slate-500">
-        {state.map((blocks) => {
-          return (
-            <tr>
-              {blocks.map((block) => {
-                return (
-                  <td className="border border-slate-700 ">
-                    <Block
-                      label={block.label}
-                      isOpen={block.isOpen}
-                      toggleIsOpen={dispatch}
-                    />
-                  </td>
-                );
-              })}
-            </tr>
-          );
-        })}
+        <tbody>
+          {state.map((blocks) => {
+            return (
+              <tr>
+                {blocks.map((block) => {
+                  return (
+                    <td className="border border-slate-700 ">
+                      <Block
+                        label={block.label}
+                        isOpen={block.isOpen}
+                        toggleIsOpen={dispatch}
+                      />
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <div className="flex-auto">
         <button

@@ -10,7 +10,9 @@ const isColumnBingo = (
   state.forEach((blocks) => {
     blocks.forEach((block, i) => {
       if (block.isOpen === true) {
-        ret = isRowBingo(state.map((blocks) => blocks[i]));
+        console.log(ret, i);
+        // if already bingo, don't calculate
+        ret = ret ? true : isRowBingo(state.map((blocks) => blocks[i]));
       }
     });
   });

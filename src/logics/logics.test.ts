@@ -94,6 +94,28 @@ describe("isColumnBingo", () => {
 
     expect(isColumnBingo(state)).toBe(false);
   });
+
+  test.only("already Bingo ", () => {
+    const state = [
+      [
+        { isOpen: false, label: "1-1" },
+        { isOpen: true, label: "1-2" },
+        { isOpen: false, label: "1-3" },
+      ],
+      [
+        { isOpen: false, label: "2-1" },
+        { isOpen: true, label: "2-2" },
+        { isOpen: false, label: "2-3" },
+      ],
+      [
+        { isOpen: false, label: "3-1" },
+        { isOpen: true, label: "3-2" },
+        { isOpen: true, label: "3-3" },
+      ],
+    ];
+
+    expect(isColumnBingo(state)).toBe(true);
+  });
 });
 
 describe("isCrossBingo()", () => {
