@@ -1,4 +1,3 @@
-import MarkovChain from "@hideokamoto/markov-chain-tiny";
 import React from "react";
 
 const Congratulations: React.FC<{
