@@ -1,5 +1,3 @@
-import { stat } from "fs";
-import React, { useReducer } from "react";
 import { Blocks } from "./Blocks";
 
 function App() {
