@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <header></header>
       <main>
-        <h1>BINGO</h1>
+        <h1 className="text-3xl font-bold underline">BINGO</h1>
         <Blocks data={BLOCKS} />
       </main>
     </div>
