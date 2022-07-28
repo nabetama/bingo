@@ -1,5 +1,6 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { Block } from "./Block";
+import { Congratulations } from "./Congratulations";
 
 import { BLOCKS as Data } from "./data/blocks";
 import { isBingo } from "./logics/logics";
@@ -47,10 +48,12 @@ const reducer = (state: State, action: ActionTypes): State => {
 };
 
 const Blocks: React.FC = () => {
-  useEffect(() => {
-    const bingo = isBingo(state);
-  });
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [isBingoSuccess, setIsBingoSuccess] = useState(false);
+  useEffect(() => {
+    setIsBingoSuccess(isBingo(state));
+    console.log(isBingoSuccess);
+  });
 
   return (
     <>
@@ -76,6 +79,7 @@ const Blocks: React.FC = () => {
         </tbody>
       </table>
       <div className="flex-auto">
+        <Congratulations isBingo={isBingoSuccess} />
         <button
           onClick={() => dispatch({ type: "CLEAR" })}
           className="bg-gray-400 hover:bg-gray-300 text-white rounded px-4 py-2 w-48"
