@@ -1,9 +1,9 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { Blocks } from "./Blocks";
 
 import { BLOCKS } from "./data/blocks";
-import { Block } from "./Block";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <header></header>
       <main>
         <h1>BINGO</h1>
+        <Blocks data={BLOCKS} />
       </main>
     </div>
   );
