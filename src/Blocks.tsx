@@ -49,7 +49,6 @@ const reducer = (state: State, action: ActionTypes): State => {
 const Blocks: React.FC = () => {
   useEffect(() => {
     const bingo = isBingo(state);
-    console.log(bingo);
   });
   const [state, dispatch] = useReducer(reducer, initialState);
 
