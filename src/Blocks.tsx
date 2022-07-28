@@ -12,11 +12,6 @@ type BlockProps = {
 
 type State = BlockProps[][];
 
-type Action = {
-  type: "TOGGLE";
-  label: string;
-};
-
 type ActionTypes = { type: "TOGGLE"; label: string } | { type: "CLEAR" };
 
 const initialState: State = Data.map((blocks) => {
