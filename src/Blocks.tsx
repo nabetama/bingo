@@ -48,7 +48,7 @@ const Blocks: React.FC = () => {
   useEffect(() => {
     setIsBingoSuccess(isBingo(state));
     console.log(isBingoSuccess);
-  });
+  }, [state, isBingoSuccess]);
 
   return (
     <>
