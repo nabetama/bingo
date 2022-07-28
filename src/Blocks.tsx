@@ -34,6 +34,12 @@ const reducer = (state: State, action: ActionTypes): State => {
           return block;
         });
       });
+    case "CLEAR":
+      return state.map((blocks) => {
+        return blocks.map((block) => {
+          return { isOpen: false, label: block.label };
+        });
+      });
     default:
       return state;
   }
