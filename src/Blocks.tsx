@@ -1,4 +1,5 @@
 import React from "react";
+import { Block } from "./Block";
 
 const Blocks: React.FC<{ data: string[][] }> = (props) => {
   return (
@@ -8,7 +9,11 @@ const Blocks: React.FC<{ data: string[][] }> = (props) => {
           return (
             <tr>
               {blocks.map((block) => {
-                return <td>{block}</td>;
+                return (
+                  <td>
+                    <Block label={block} isOpen={false} />
+                  </td>
+                );
               })}
             </tr>
           );

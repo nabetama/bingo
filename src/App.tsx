@@ -5,6 +5,11 @@ import { Blocks } from "./Blocks";
 
 import { BLOCKS } from "./data/blocks";
 
+type Block = {
+  label: string;
+  isOpen: boolean;
+};
+
 function App() {
   return (
     <div className="App">
