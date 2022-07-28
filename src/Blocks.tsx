@@ -15,13 +15,15 @@ type Action = {
   label: string;
 };
 
+type ActionTypes = { type: "TOGGLE"; label: string } | { type: "CLEAR" };
+
 const initialState: State = Data.map((blocks) => {
   return blocks.map((block) => {
     return { isOpen: false, label: block };
   });
 });
 
-const reducer = (state: State, action: Action): State => {
+const reducer = (state: State, action: ActionTypes): State => {
   switch (action.type) {
     case "TOGGLE":
       return state.map((blocks) => {
@@ -42,7 +44,7 @@ const Blocks: React.FC = () => {
 
   return (
     <>
-      <table className="border-separate border-spacing-2 border border-slate-500 ">
+      <table className="border-separate border-spacing-2 border border-slate-500">
         {state.map((blocks) => {
           return (
             <tr>
@@ -61,6 +63,14 @@ const Blocks: React.FC = () => {
           );
         })}
       </table>
+      <div className="flex-auto">
+        <button
+          onClick={() => dispatch({ type: "CLEAR" })}
+          className="bg-gray-400 hover:bg-gray-300 text-white rounded px-4 py-2 w-48"
+        >
+          さいしょにもどす
+        </button>
+      </div>
     </>
   );
 };
