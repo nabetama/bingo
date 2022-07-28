@@ -5,17 +5,12 @@ import { Congratulations } from "./Congratulations";
 import { BLOCKS as Data } from "./data/blocks";
 import { isBingo } from "./logics/logics";
 
-type Block = {
+type BlockProps = {
   isOpen: boolean;
   label: string;
 };
 
-type State = Block[][];
-
-type Action = {
-  type: "TOGGLE";
-  label: string;
-};
+type State = BlockProps[][];
 
 type ActionTypes = { type: "TOGGLE"; label: string } | { type: "CLEAR" };
 
@@ -53,7 +48,7 @@ const Blocks: React.FC = () => {
   useEffect(() => {
     setIsBingoSuccess(isBingo(state));
     console.log(isBingoSuccess);
-  });
+  }, [state, isBingoSuccess]);
 
   return (
     <>
