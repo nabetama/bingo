@@ -1,5 +1,5 @@
 import exp from "constants";
-import { isColumnBingo, isRowBingo } from "./logics";
+import { isColumnBingo, isRowBingo, isCrossBingo } from "./logics";
 
 describe("isRowBingo()", () => {
   test("is Bingo", () => {
@@ -58,5 +58,130 @@ describe("isColumnBingo", () => {
 
   test("not bingo when some cell is not open", () => {
     expect(isColumnBingo(state, 1)).toBe(false);
+  });
+});
+
+describe("isCrossBingo()", () => {
+  test("bingo 1", () => {
+    const bingoState1 = [
+      [
+        { isOpen: true, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: true, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: true, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: true, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: true, label: "dummy" },
+      ],
+    ];
+    expect(isCrossBingo(bingoState1)).toBe(true);
+  });
+
+  test("bingo 2", () => {
+    const bingoState1 = [
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: true, label: "dummy" },
+      ],
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: true, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: true, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: true, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: true, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+    ];
+    expect(isCrossBingo(bingoState1)).toBe(true);
+  });
+
+  test("not bingo ", () => {
+    const bingoState1 = [
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: true, label: "dummy" },
+      ],
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: true, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: true, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: true, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+    ];
+    expect(isCrossBingo(bingoState1)).toBe(false);
   });
 });
