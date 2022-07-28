@@ -1,4 +1,3 @@
-import exp from "constants";
 import { isColumnBingo, isRowBingo, isCrossBingo } from "./logics";
 
 describe("isRowBingo()", () => {
@@ -30,34 +29,70 @@ describe("isRowBingo()", () => {
 });
 
 describe("isColumnBingo", () => {
-  const state = [
-    [
-      { isOpen: true, label: "1-1" },
-      { isOpen: false, label: "dummy" },
-      { isOpen: false, label: "dummy" },
-    ],
-    [
-      { isOpen: true, label: "2-1" },
-      { isOpen: true, label: "dummy" },
-      { isOpen: false, label: "dummy" },
-    ],
-    [
-      { isOpen: true, label: "3-1" },
-      { isOpen: true, label: "dummy" },
-      { isOpen: false, label: "dummy" },
-    ],
-  ];
-
   test("is Bingo", () => {
-    expect(isColumnBingo(state, 0)).toBe(true);
+    const state = [
+      [
+        { isOpen: true, label: "1-1" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: true, label: "2-1" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: true, label: "3-1" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+    ];
+
+    expect(isColumnBingo(state)).toBe(true);
   });
 
-  test("is not bingo when all cells are not open", () => {
-    expect(isColumnBingo(state, 2)).toBe(false);
+  test("is Bingo 2", () => {
+    const state = [
+      [
+        { isOpen: true, label: "1-1" },
+        { isOpen: true, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: true, label: "2-1" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: true, label: "3-1" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+    ];
+
+    expect(isColumnBingo(state)).toBe(true);
   });
 
-  test("not bingo when some cell is not open", () => {
-    expect(isColumnBingo(state, 1)).toBe(false);
+  test("is NOT Bingo", () => {
+    const state = [
+      [
+        { isOpen: false, label: "1-1" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: true, label: "2-1" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+      [
+        { isOpen: true, label: "3-1" },
+        { isOpen: false, label: "dummy" },
+        { isOpen: false, label: "dummy" },
+      ],
+    ];
+
+    expect(isColumnBingo(state)).toBe(false);
   });
 });
 

@@ -3,15 +3,18 @@ const isRowBingo = (row: { isOpen: boolean; label: string }[]): boolean => {
 };
 
 const isColumnBingo = (
-  columnBlocks: { isOpen: boolean; label: string }[][],
-  columnIndex: number
+  state: { isOpen: boolean; label: string }[][]
 ): boolean => {
-  const arr = columnBlocks.map((blocks) => blocks[columnIndex]);
+  let ret = false;
 
-  if (isRowBingo(arr)) {
-    return true;
-  }
-  return false;
+  state.forEach((blocks) => {
+    blocks.forEach((block, i) => {
+      if (block.isOpen === true) {
+        ret = isRowBingo(state.map((blocks) => blocks[i]));
+      }
+    });
+  });
+  return ret;
 };
 
 // TODO: No hard coding
@@ -36,4 +39,8 @@ const isCrossBingo = (
   return isRowBingo(cross1) || isRowBingo(cross2);
 };
 
-export { isRowBingo, isColumnBingo, isCrossBingo };
+const isBingo = (state: { isOpen: boolean; label: string }[][]): boolean => {
+  return state.some(isRowBingo) || isColumnBingo(state) || isCrossBingo(state);
+};
+
+export { isRowBingo, isColumnBingo, isCrossBingo, isBingo };
