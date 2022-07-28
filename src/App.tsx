@@ -1,13 +1,6 @@
-import React from "react";
-import logo from "./logo.svg";
+import { stat } from "fs";
+import React, { useReducer } from "react";
 import { Blocks } from "./Blocks";
-
-import { BLOCKS } from "./data/blocks";
-
-type Block = {
-  label: string;
-  isOpen: boolean;
-};
 
 function App() {
   return (
@@ -16,7 +9,7 @@ function App() {
       <main className="text-center">
         <h1 className="text-3xl font-bold underline">BINGO</h1>
         <div className="h-56 grid grid-cols-1 gap-1 content-around text-center">
-          <Blocks data={BLOCKS} />
+          <Blocks />
         </div>
       </main>
     </div>
