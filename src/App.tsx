@@ -11,11 +11,6 @@ function App() {
       <header></header>
       <main>
         <h1>BINGO</h1>
-        {BLOCKS.map((labels) => {
-          return labels.map((label) => {
-            return <Block label={label} />;
-          });
-        })}
       </main>
     </div>
   );
