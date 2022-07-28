@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 import { Block } from "../Block";
 
 test("renders block with argument value", () => {
-  render(<Block label="dummy" />);
+  render(<Block label="dummy" isOpen={false} />);
   const val = screen.getByText(/dummy/);
   expect(val).toBeInTheDocument();
 });
