@@ -6,10 +6,10 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup Node
@@ -24,12 +24,37 @@ jobs:
           restore-keys: |
             node-
 
+      - name: Run tests
+        run: |
+          npm run test
+
       - name: Install and Build
         run: |
           npm ci
           npm run build
 
-      - name: Deploy
+      # https://github.com/actions/upload-artifact
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v3
+        with:
+          name: prod-files
+          path: ./build
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      # https://github.com/actions/download-artifact
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: prod-files
+          path: ./build
+
+      - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
