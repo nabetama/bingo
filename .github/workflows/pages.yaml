@@ -24,13 +24,16 @@ jobs:
           restore-keys: |
             node-
 
+      - name: Install
+        run: |
+          npm ci
+
       - name: Run tests
         run: |
           npm run test
 
-      - name: Install and Build
+      - name: Build
         run: |
-          npm ci
           npm run build
 
       # https://github.com/actions/upload-artifact

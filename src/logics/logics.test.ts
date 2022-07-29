@@ -95,7 +95,7 @@ describe("isColumnBingo", () => {
     expect(isColumnBingo(state)).toBe(false);
   });
 
-  test.only("already Bingo ", () => {
+  test("already Bingo ", () => {
     const state = [
       [
         { isOpen: false, label: "1-1" },
