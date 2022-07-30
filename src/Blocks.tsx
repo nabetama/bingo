@@ -3,7 +3,7 @@ import { Block } from "./Block";
 import { Congratulations } from "./Congratulations";
 
 import { LABELS } from "./data/initial";
-import { makeLabels } from "./shuffle";
+import { makeLabels } from "./logics/shuffle";
 import { isBingo } from "./logics/logics";
 
 type BlockProps = {
