@@ -54,12 +54,15 @@ const Blocks: React.FC = () => {
     <>
       <table className="border-separate border-spacing-2 border border-slate-500">
         <tbody>
-          {state.map((blocks) => {
+          {state.map((blocks, idx) => {
             return (
-              <tr>
-                {blocks.map((block) => {
+              <tr key={idx.toString()}>
+                {blocks.map((block, idx) => {
                   return (
-                    <td className="border border-slate-700 ">
+                    <td
+                      key={`${block.label}-${idx.toString()}`}
+                      className="border border-slate-700 "
+                    >
                       <Block
                         label={block.label}
                         isOpen={block.isOpen}
