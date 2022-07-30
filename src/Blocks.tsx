@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import { Block } from "./Block";
 import { Congratulations } from "./Congratulations";
 
-import { BLOCKS as Data } from "./data/blocks";
+import { LABELS } from "./data/initial";
 import { isBingo } from "./logics/logics";
 
 type BlockProps = {
@@ -14,9 +14,9 @@ type State = BlockProps[][];
 
 type ActionTypes = { type: "TOGGLE"; label: string } | { type: "CLEAR" };
 
-const initialState: State = Data.map((blocks) => {
-  return blocks.map((block) => {
-    return { isOpen: false, label: block };
+const initialState: State = LABELS.map((row) => {
+  return row.map((column) => {
+    return { isOpen: false, label: column };
   });
 });
 
