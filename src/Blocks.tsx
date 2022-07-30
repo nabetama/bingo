@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import { Block } from "./Block";
 import { Congratulations } from "./Congratulations";
 
-import { BLOCKS as Data } from "./data/blocks";
+import { Labels } from "./data/initial";
 import { isBingo } from "./logics/logics";
 
 type BlockProps = {
@@ -14,9 +14,9 @@ type State = BlockProps[][];
 
 type ActionTypes = { type: "TOGGLE"; label: string } | { type: "CLEAR" };
 
-const initialState: State = Data.map((blocks) => {
-  return blocks.map((block) => {
-    return { isOpen: false, label: block };
+const initialState: State = Labels.map((labels) => {
+  return labels.map((label) => {
+    return { isOpen: false, label };
   });
 });
 
@@ -54,12 +54,15 @@ const Blocks: React.FC = () => {
     <>
       <table className="border-separate border-spacing-2 border border-slate-500">
         <tbody>
-          {state.map((blocks) => {
+          {state.map((blocks, idx) => {
             return (
-              <tr>
-                {blocks.map((block) => {
+              <tr key={`"row-"${idx.toString()}`}>
+                {blocks.map((block, idx) => {
                   return (
-                    <td className="border border-slate-700 ">
+                    <td
+                      key={`${block.label}-${idx.toString()}`}
+                      className="border border-slate-700 "
+                    >
                       <Block
                         label={block.label}
                         isOpen={block.isOpen}
