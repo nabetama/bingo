@@ -1,4 +1,4 @@
-import { isColumnBingo, isRowBingo, isCrossBingo } from "./logics";
+import { isColumnBingo, isRowBingo, isCrossBingo } from "../logics";
 
 describe("isRowBingo()", () => {
   test("is Bingo", () => {
