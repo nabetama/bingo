@@ -3,6 +3,7 @@ import { Block } from "./Block";
 import { Congratulations } from "./Congratulations";
 
 import { LABELS } from "./data/initial";
+import { makeLabels } from "./shuffle";
 import { isBingo } from "./logics/logics";
 
 type BlockProps = {
@@ -14,7 +15,7 @@ type State = BlockProps[][];
 
 type ActionTypes = { type: "TOGGLE"; label: string } | { type: "CLEAR" };
 
-const initialState: State = LABELS.map((row) => {
+const initialState: State = makeLabels(LABELS, 5, 5).map((row) => {
   return row.map((column) => {
     return { isOpen: false, label: column };
   });
@@ -61,7 +62,9 @@ const Blocks: React.FC = () => {
                   return (
                     <td
                       key={`${block.label}-${idx.toString()}`}
-                      className="border border-slate-700 "
+                      className={`${
+                        block.isOpen ? "bg-emerald-500" : "bg-indigo-50"
+                      } border border-slate-700 `}
                     >
                       <Block
                         label={block.label}
