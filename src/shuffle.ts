@@ -1,5 +1,3 @@
-import { strict } from "assert";
-
 /**
  * shuffle returns shuffled array
  * @param {T[]} arr - array to shuffle
