@@ -19,10 +19,11 @@ const shuffle = <T>(arr: T[]): T[] => {
 };
 
 const makeLabels = <T>(data: T[], row: number, column: number) => {
+  const arr = shuffle(data);
   let newArr = [];
 
   for (let i = 0; i < row; i++) {
-    newArr.push(shuffle(data).splice(0, column));
+    newArr.push(arr.splice(0, column));
   }
 
   return newArr;
