@@ -53,37 +53,23 @@ const Blocks: React.FC = () => {
 
   return (
     <>
-      <table className="border-separate border-spacing-2 border border-slate-500">
-        <tbody>
-          {state.map((blocks, idx) => {
+      <div className="grid grid-cols-5 items-center">
+        {state.map((blocks, idx) =>
+          blocks.map((block, idx) => {
             return (
-              <tr key={idx.toString()}>
-                {blocks.map((block, idx) => {
-                  return (
-                    <td
-                      key={`${block.label}-${idx.toString()}`}
-                      className={`${
-                        block.isOpen ? "bg-emerald-500" : "bg-indigo-50"
-                      } border border-slate-700 `}
-                    >
-                      <Block
-                        label={block.label}
-                        isOpen={block.isOpen}
-                        toggleIsOpen={dispatch}
-                      />
-                    </td>
-                  );
-                })}
-              </tr>
+              <Block
+                label={block.label}
+                isOpen={block.isOpen}
+                toggleIsOpen={dispatch}
+                key={block.label + idx.toString()}
+              />
             );
-          })}
-        </tbody>
-      </table>
-      <div className="flex-auto">
+          })
+        )}
         <Congratulations isBingo={isBingoSuccess} />
         <button
           onClick={() => dispatch({ type: "CLEAR" })}
-          className="bg-gray-400 hover:bg-gray-300 text-white rounded px-4 py-2 w-48"
+          className="col-span-5"
         >
           さいしょにもどす
         </button>

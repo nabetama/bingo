@@ -5,8 +5,12 @@ const Congratulations: React.FC<{
 }> = (props) => {
   if (props.isBingo) {
     return (
-      <div className={`${props.isBingo ? "px-8" : "hidden"}`}>
-        Congratulations!!
+      <div
+        className={
+          "col-span-5 text-center font-serif text-3xl font-black text-red-600"
+        }
+      >
+        BINGO!!
       </div>
     );
   } else {
