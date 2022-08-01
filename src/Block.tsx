@@ -9,7 +9,7 @@ const Block: React.FC<{
     <div
       className={`${
         props.isOpen ? "bg-emerald-500" : "bg-indigo-50"
-      } cursor-pointer border border-l-slate-700 text-center`}
+      } cursor-pointer border-dotted border-gray-400 border-2 text-center`}
       onClick={() => props.toggleIsOpen({ type: "TOGGLE", label: props.label })}
     >
       {props.label}

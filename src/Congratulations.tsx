@@ -7,7 +7,7 @@ const Congratulations: React.FC<{
     return (
       <div
         className={
-          "col-span-5 text-center font-serif text-3xl font-black text-red-600"
+          "col-start-3 col-end-3 text-center font-serif text-3xl font-black text-red-600"
         }
       >
         BINGO!!

@@ -69,9 +69,9 @@ const Blocks: React.FC = () => {
         <Congratulations isBingo={isBingoSuccess} />
         <button
           onClick={() => dispatch({ type: "CLEAR" })}
-          className="col-span-5"
+          className="col-start-3 col-end-3 mt-10 bg-slate-400 rounded-full py-2 px-4"
         >
-          さいしょにもどす
+          リセットする
         </button>
       </div>
     </>
