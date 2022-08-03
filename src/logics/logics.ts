@@ -1,10 +1,10 @@
-const isRowBingo = (row: { isOpen: boolean; label: string }[]): boolean => {
+type Block = { isOpen: boolean; label: string };
+
+const isRowBingo = (row: Block[]): boolean => {
   return row.every((cell) => cell.isOpen === true);
 };
 
-const isColumnBingo = (
-  state: { isOpen: boolean; label: string }[][]
-): boolean => {
+const isColumnBingo = (state: Block[][]): boolean => {
   let ret = false;
 
   state.forEach((blocks) => {
@@ -19,9 +19,7 @@ const isColumnBingo = (
 };
 
 // TODO: No hard coding
-const isCrossBingo = (
-  state: { isOpen: boolean; label: string }[][]
-): boolean => {
+const isCrossBingo = (state: Block[][]): boolean => {
   const cross1 = [
     state[0][0],
     state[1][1],
@@ -40,7 +38,7 @@ const isCrossBingo = (
   return isRowBingo(cross1) || isRowBingo(cross2);
 };
 
-const isBingo = (state: { isOpen: boolean; label: string }[][]): boolean => {
+const isBingo = (state: Block[][]): boolean => {
   return state.some(isRowBingo) || isColumnBingo(state) || isCrossBingo(state);
 };
 
