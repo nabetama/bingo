@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Congratulations /> is BINGO 1`] = `
+<div
+  className="col-start-3 col-end-3 text-center font-serif text-3xl font-black text-red-600"
+>
+  BINGO!!
+</div>
+`;
+
+exports[`<Congratulations /> is not BINGO 1`] = `null`;
