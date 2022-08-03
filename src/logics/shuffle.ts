@@ -18,7 +18,7 @@ const shuffle = <T>(arr: T[]): T[] => {
   return a;
 };
 
-const makeLabels = <T>(data: T[], row: number, column: number) => {
+const makeLabels = <T>(data: T[], row: number, column: number): T[][] => {
   const arr = shuffle(data);
   let newArr = [];
 
