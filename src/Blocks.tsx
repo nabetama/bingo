@@ -39,7 +39,7 @@ const reducer = (state: State, action: ActionTypes): State => {
         });
       });
     default:
-      return state;
+      throw new Error("Invalid action type");
   }
 };
 
@@ -48,7 +48,7 @@ const Blocks: React.FC = () => {
   const [isBingoSuccess, setIsBingoSuccess] = useState(false);
   useEffect(() => {
     setIsBingoSuccess(isBingo(state));
-    console.log(isBingoSuccess);
+    // console.log(isBingoSuccess);
   }, [state, isBingoSuccess]);
 
   return (
